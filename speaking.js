@@ -21,15 +21,10 @@ let recognition;
 let isTestRunning = false;
 
 
-startButton.addEventListener(
-    "click",
-    startSpeakingTest
-);
+startButton.addEventListener("click", startSpeakingTest);
 
-endButton.addEventListener(
-    "click",
-    endSpeakingTest
-);
+endButton.addEventListener("click", endSpeakingTest);
+
 
 
 const SpeechRecognition =
@@ -48,9 +43,7 @@ if (!SpeechRecognition) {
     recognition = new SpeechRecognition();
 
     recognition.lang = "en-US";
-
     recognition.continuous = false;
-
     recognition.interimResults = false;
 
 
@@ -68,21 +61,16 @@ if (!SpeechRecognition) {
 
     recognition.onerror = function (event) {
 
-        console.error(
-            "Microphone error:",
-            event.error
-        );
+        console.error("Microphone error:", event.error);
 
-        if (isTestRunning) {
-
-            aiStatus.textContent =
-                "Microphone error. Try again.";
-
-        }
+        aiStatus.textContent =
+            "Microphone error. Try again.";
 
     };
 
 }
+
+
 
 
 async function startSpeakingTest() {
@@ -90,11 +78,9 @@ async function startSpeakingTest() {
     isTestRunning = true;
 
     startButton.disabled = true;
-
     endButton.disabled = false;
 
     seconds = 0;
-
     conversation = [];
 
     conversationMessages.innerHTML = "";
@@ -102,28 +88,28 @@ async function startSpeakingTest() {
     aiStatus.textContent =
         "AI is connecting...";
 
+
     examinerMessage.textContent =
         "Connecting to your AI IELTS examiner...";
+
 
     startTimer();
 
 
-    const firstMessage =
-        "Start a realistic IELTS Speaking Part 1 test. Greet the candidate and ask for their full name.";
 
     conversation.push({
 
         role: "user",
 
         parts: [
-
             {
-                text: firstMessage
+                text:
+                "Start a realistic IELTS Speaking Part 1 test. Greet the candidate and ask for their full name."
             }
-
         ]
 
     });
+
 
 
     await sendConversationToAI();
@@ -131,7 +117,11 @@ async function startSpeakingTest() {
 }
 
 
+
+
+
 async function sendToAI(userText) {
+
 
     if (!isTestRunning) return;
 
@@ -141,11 +131,9 @@ async function sendToAI(userText) {
         role: "user",
 
         parts: [
-
             {
                 text: userText
             }
-
         ]
 
     });
@@ -156,17 +144,23 @@ async function sendToAI(userText) {
 }
 
 
+
+
+
 async function sendConversationToAI() {
 
+
     try {
+
 
         aiStatus.textContent =
             "AI is thinking...";
 
 
+
         const response = await fetch(
 
-            "http://localhost:3000/speaking-response",
+            "https://factewow-1.onrender.com/speaking-response",
 
             {
 
@@ -175,14 +169,14 @@ async function sendConversationToAI() {
                 headers: {
 
                     "Content-Type":
-                        "application/json"
+                    "application/json"
 
                 },
 
+
                 body: JSON.stringify({
 
-                    conversation:
-                        conversation
+                    conversation: conversation
 
                 })
 
@@ -191,8 +185,9 @@ async function sendConversationToAI() {
         );
 
 
-        const data =
-            await response.json();
+
+        const data = await response.json();
+
 
 
         if (!data.reply) {
@@ -202,6 +197,7 @@ async function sendConversationToAI() {
             );
 
         }
+
 
 
         conversation.push({
@@ -219,25 +215,24 @@ async function sendConversationToAI() {
         });
 
 
-        aiStatus.textContent =
-            "AI examiner is speaking...";
-
 
         examinerMessage.textContent =
             data.reply;
 
 
-        addAIMessage(
-            data.reply
-        );
+        aiStatus.textContent =
+            "AI examiner is speaking...";
 
 
-        speakAI(
-            data.reply
-        );
+        addAIMessage(data.reply);
+
+
+        speakAI(data.reply);
+
 
 
     } catch (error) {
+
 
         console.error(error);
 
@@ -254,35 +249,33 @@ async function sendConversationToAI() {
 }
 
 
+
+
+
 function speakAI(text) {
+
 
     const speech =
         new SpeechSynthesisUtterance(text);
 
 
-    speech.lang =
-        "en-US";
+    speech.lang = "en-US";
 
+    speech.rate = 0.95;
 
-    speech.rate =
-        0.95;
+    speech.pitch = 1;
 
-
-    speech.pitch =
-        1;
 
 
     speech.onend = function () {
 
-        if (
 
-            isTestRunning &&
-            recognition
+        if (isTestRunning && recognition) {
 
-        ) {
 
             aiStatus.textContent =
                 "Your turn — speak now.";
+
 
             recognition.start();
 
@@ -291,28 +284,27 @@ function speakAI(text) {
     };
 
 
+
     window.speechSynthesis.cancel();
 
-    window.speechSynthesis.speak(
-        speech
-    );
+    window.speechSynthesis.speak(speech);
 
 }
 
 
+
+
+
 function addAIMessage(text) {
+
 
     conversationMessages.innerHTML += `
 
         <div class="message ai-message">
 
-            <strong>
-                AI Examiner
-            </strong>
+            <strong>AI Examiner</strong>
 
-            <p>
-                ${text}
-            </p>
+            <p>${text}</p>
 
         </div>
 
@@ -321,19 +313,19 @@ function addAIMessage(text) {
 }
 
 
+
+
+
 function addUserMessage(text) {
+
 
     conversationMessages.innerHTML += `
 
         <div class="message user-message">
 
-            <strong>
-                You
-            </strong>
+            <strong>You</strong>
 
-            <p>
-                ${text}
-            </p>
+            <p>${text}</p>
 
         </div>
 
@@ -342,15 +334,16 @@ function addUserMessage(text) {
 }
 
 
+
+
+
 function endSpeakingTest() {
 
-    isTestRunning =
-        false;
+
+    isTestRunning = false;
 
 
-    clearInterval(
-        timerInterval
-    );
+    clearInterval(timerInterval);
 
 
     if (recognition) {
@@ -363,12 +356,11 @@ function endSpeakingTest() {
     window.speechSynthesis.cancel();
 
 
-    startButton.disabled =
-        false;
 
+    startButton.disabled = false;
 
-    endButton.disabled =
-        true;
+    endButton.disabled = true;
+
 
 
     aiStatus.textContent =
@@ -381,52 +373,41 @@ function endSpeakingTest() {
 }
 
 
+
+
+
 function startTimer() {
 
-    timerInterval =
-        setInterval(
 
-            function () {
-
-                seconds++;
+    timerInterval = setInterval(function () {
 
 
-                const minutes =
-                    Math.floor(
-                        seconds / 60
-                    );
+        seconds++;
 
 
-                const remainingSeconds =
-                    seconds % 60;
+        const minutes =
+            Math.floor(seconds / 60);
 
 
-                testTimer.textContent =
+        const remainingSeconds =
+            seconds % 60;
 
-                    String(
-                        minutes
-                    ).padStart(
-                        2,
-                        "0"
-                    )
 
-                    +
 
-                    ":"
+        testTimer.textContent =
 
-                    +
+            String(minutes).padStart(2, "0")
 
-                    String(
-                        remainingSeconds
-                    ).padStart(
-                        2,
-                        "0"
-                    );
+            +
 
-            },
+            ":"
 
-            1000
+            +
 
-        );
+            String(remainingSeconds).padStart(2, "0");
+
+
+
+    }, 1000);
 
 }
