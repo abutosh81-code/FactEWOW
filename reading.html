@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>FactEWOW - Reading Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav>
+            <h1>FactEWOW</h1>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="practice.html">Practice</a>
+                <a href="progress.html">Progress</a>
+            </div>
+
+            <a href="profile.html">
+                <button class="profile-button">My Profile</button>
+            </a>
+        </nav>
+
+
+        <main>
+
+            <section class="hero">
+
+                <div class="hero-text">
+
+                    <p class="eyebrow">IELTS READING</p>
+
+                    <h2>Choose your test.<br>Start practising.</h2>
+
+                    <p>
+                        Select your IELTS Reading format and explore
+                        the FactEWOW test library.
+                    </p>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <div class="stat-circle">
+                        <span>READING</span>
+                        <strong>60</strong>
+                        <small>MINUTES</small>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TWO READING TYPES -->
+
+            <section id="test-selection" class="skills-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">CHOOSE YOUR FORMAT</p>
+
+                        <h2>
+                            What type of IELTS Reading?
+                        </h2>
+                    </div>
+
+                    <p>
+                        Select Academic or General Training to see
+                        the available tests.
+                    </p>
+
+                </div>
+
+
+                <div class="skills">
+
+
+                    <!-- ACADEMIC -->
+
+                    <div class="skill-card">
+
+                        <div class="skill-icon">
+                            A
+                        </div>
+
+                        <h3>
+                            Academic Reading
+                        </h3>
+
+                        <p>
+                            Practise academic texts covering science,
+                            history, education and more.
+                        </p>
+
+                        <button onclick="showTests('academic')">
+                            View Academic Tests →
+                        </button>
+
+                    </div>
+
+
+                    <!-- GENERAL -->
+
+                    <div class="skill-card">
+
+                        <div class="skill-icon">
+                            G
+                        </div>
+
+                        <h3>
+                            General Training Reading
+                        </h3>
+
+                        <p>
+                            Practise everyday, workplace and general
+                            interest reading texts.
+                        </p>
+
+                        <button onclick="showTests('general')">
+                            View General Tests →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACADEMIC TESTS -->
+
+            <section id="academic-tests" class="skills-section hidden">
+
+                <button class="back-button" onclick="showSelection()">
+                    ← Back to Reading Types
+                </button>
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            ACADEMIC IELTS
+                        </p>
+
+                        <h2>
+                            Academic Reading Tests
+                        </h2>
+
+                    </div>
+
+                    <p>
+                        Choose a test and practise under realistic
+                        IELTS conditions.
+                    </p>
+
+                </div>
+
+
+                <div class="test-grid">
+
+
+                    <div class="test-card">
+
+                        <span class="test-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Academic Reading Test 1
+                        </h3>
+
+                        <p>
+                            3 passages · 40 questions · 60 minutes
+                        </p>
+
+                        <a href="reading-test.html">
+
+                            <button>
+                                Start Test →
+                            </button>
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="test-card">
+
+                        <span class="test-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Academic Reading Test 2
+                        </h3>
+
+                        <p>
+                            3 passages · 40 questions · 60 minutes
+                        </p>
+
+                        <button>
+                            Coming Soon
+                        </button>
+
+                    </div>
+
+
+                    <div class="test-card">
+
+                        <span class="test-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Academic Reading Test 3
+                        </h3>
+
+                        <p>
+                            3 passages · 40 questions · 60 minutes
+                        </p>
+
+                        <button>
+                            Coming Soon
+                        </button>
+
+                    </div>
+
+
+                    <div class="test-card">
+
+                        <span class="test-number">
+                            04
+                        </span>
+
+                        <h3>
+                            Academic Reading Test 4
+                        </h3>
+
+                        <p>
+                            3 passages · 40 questions · 60 minutes
+                        </p>
+
+                        <button>
+                            Coming Soon
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- GENERAL TESTS -->
+
+            <section id="general-tests" class="skills-section hidden">
+
+                <button class="back-button" onclick="showSelection()">
+                    ← Back to Reading Types
+                </button>
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            GENERAL TRAINING IELTS
+                        </p>
+
+                        <h2>
+                            General Training Reading Tests
+                        </h2>
+
+                    </div>
+
+                    <p>
+                        Practise realistic General Training Reading
+                        sections and questions.
+                    </p>
+
+                </div>
+
+
+                <div class="test-grid">
+
+
+                    <div class="test-card">
+
+                        <span class="test-number">
+                            01
+                        </span>
+
+                        <h3>
+                            General Training Test 1
+                        </h3>
+
+                        <p>
+                            3 sections · 40 questions · 60 minutes
+                        </p>
+
+                        <button>
+                            Coming Soon
+                        </button>
+
+                    </div>
+
+
+                    <div class="test-card">
+
+                        <span class="test-number">
+                            02
+                        </span>
+
+                        <h3>
+                            General Training Test 2
+                        </h3>
+
+                        <p>
+                            3 sections · 40 questions · 60 minutes
+                        </p>
+
+                        <button>
+                            Coming Soon
+                        </button>
+
+                    </div>
+
+
+                    <div class="test-card">
+
+                        <span class="test-number">
+                            03
+                        </span>
+
+                        <h3>
+                            General Training Test 3
+                        </h3>
+
+                        <p>
+                            3 sections · 40 questions · 60 minutes
+                        </p>
+
+                        <button>
+                            Coming Soon
+                        </button>
+
+                    </div>
+
+
+                    <div class="test-card">
+
+                        <span class="test-number">
+                            04
+                        </span>
+
+                        <h3>
+                            General Training Test 4
+                        </h3>
+
+                        <p>
+                            3 sections · 40 questions · 60 minutes
+                        </p>
+
+                        <button>
+                            Coming Soon
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        function showTests(type) {
+
+            document
+                .getElementById("test-selection")
+                .classList.add("hidden");
+
+
+            if (type === "academic") {
+
+                document
+                    .getElementById("academic-tests")
+                    .classList.remove("hidden");
+
+            }
+
+
+            if (type === "general") {
+
+                document
+                    .getElementById("general-tests")
+                    .classList.remove("hidden");
+
+            }
+
+        }
+
+
+        function showSelection() {
+
+            document
+                .getElementById("academic-tests")
+                .classList.add("hidden");
+
+
+            document
+                .getElementById("general-tests")
+                .classList.add("hidden");
+
+
+            document
+                .getElementById("test-selection")
+                .classList.remove("hidden");
+
+        }
+
+    </script>
+<script src="theme.js"></script>
+</body>
+
+</html>

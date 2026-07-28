@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FactEWOW - AI Speaking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="speaking-app">
+
+        <header class="speaking-header">
+
+            <div>
+                <h1>FactEWOW</h1>
+                <p>AI Speaking Practice</p>
+            </div>
+
+            <div class="speaking-status">
+                <span class="status-dot"></span>
+                <span id="ai-status">Ready to begin</span>
+            </div>
+
+        </header>
+
+
+        <main class="speaking-main">
+
+            <section class="ai-examiner-card">
+
+                <div class="ai-avatar">
+                    🤖
+                </div>
+
+                <h2>AI IELTS Examiner</h2>
+
+                <p id="examiner-message">
+                    When you are ready, start your speaking test.
+                </p>
+
+                <div class="speaking-wave" id="speaking-wave">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </section>
+
+
+            <section class="conversation-panel">
+
+                <div class="conversation-header">
+
+                    <h2>Conversation</h2>
+
+                    <span id="test-timer">
+                        00:00
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="conversation-messages"
+                    id="conversation-messages"
+                >
+
+                    <div class="message ai-message">
+
+                        <strong>AI Examiner</strong>
+
+                        <p>
+                            Welcome to your IELTS Speaking practice test.
+                            Click Start Test when you are ready.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="speaking-controls">
+
+                    <button
+                        id="start-button"
+                        class="start-speaking-button"
+                    >
+
+                        🎙️ Start Test
+
+                    </button>
+
+
+                    <button
+                        id="end-button"
+                        class="end-speaking-button"
+                        disabled
+                    >
+
+                        End Test
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="theme.js"></script>
+
+    <script src="speaking.js"></script>
+
+</body>
+
+</html>
